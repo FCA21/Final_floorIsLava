@@ -1,15 +1,21 @@
 import { Player } from "./player.js"
 import { Platform } from "./platform.js"
+import { Lava } from "./lava.js"
 
 var board = document.getElementById("board")
 var firstplatform = new Platform(0,880,600)
 var player1 = new Player(274, 5);
- 
+
+var lava = new Lava(0, 880);
+
 var platforms = []
 
 firstplatform.insertPlatform()
+firstplatform.sprite.classList.add("platform1")
+firstplatform.sprite.classList.remove("platform")
 
 player1.insertPlayer()// Ejecutamos la funcion que crea al jugador
+
 
 window.addEventListener('keydown', function (e) { //Cambiamos la direccion dependiendo de la tecla pulsada
     switch (e.key) {
@@ -41,33 +47,32 @@ window.addEventListener('keydown', function (e) { //Cambiamos la direccion depen
 })
 
 // Función para crear la pantalla de inicio
-function createStartScreen() {
-    var startScreenDiv = document.createElement("div");
-    startScreenDiv.id = "start";
+var board = document.getElementById("board");
+var startButton = document.createElement("button");
+startButton.textContent = "Start Game";
+var startScreen = document.createElement("div");
+startScreen.setAttribute("id", "start");
+var gameOverScreen = document.getElementById("game-over");
 
-    var title = document.createElement("h1");
-    title.textContent = "Floor Is Lava";
+// Agrega el botón "Start Game" al inicio
+startScreen.appendChild(document.createElement("h1")).textContent = "Welcome to My Game";
+startButton.addEventListener("click", startGame);
+startScreen.appendChild(startButton);
+document.body.appendChild(startScreen);
 
-    var instructions = document.createElement("p");
-    instructions.textContent = "Instrucciones del juego";
-
-    var startButton = document.createElement("button");
-    startButton.textContent = "Iniciar Juego";
-    startButton.onclick = startGame; 
-    startScreenDiv.appendChild(title);
-    startScreenDiv.appendChild(instructions);
-    startScreenDiv.appendChild(startButton);
-
-    document.body.appendChild(startScreenDiv);
+function startGame() {
+    // Oculta la pantalla de inicio y muestra el tablero del juego
+    startScreen.style.display = "none";
+    board.style.display = "block";
 }
-window.addEventListener("load", createStartScreen);
 
-
+//Pantalla restart
 var restartButton = document.createElement("button");
 restartButton.textContent = "Restart Game";
 restartButton.addEventListener("click", restartGame)
 var gameOverDiv = document.getElementById("game-over");
 gameOverDiv.appendChild(restartButton);
+
 
 function restartGame() {
     clearInterval(timerId);
@@ -82,6 +87,8 @@ function restartGame() {
 
     firstplatform = new Platform(0, 880, 600);
     firstplatform.insertPlatform();
+    firstplatform.sprite.classList.add("platform1")
+    firstplatform.sprite.classList.remove("platform")
     player1 = new Player(274, 5);
     player1.insertPlayer();
     gameOverDiv.style.display = "none"
@@ -90,13 +97,12 @@ function restartGame() {
 }
 
 function checkGameOver() {
-    if (player1.y >= 960) { //revisar este valor
+    if (player1.y >= 800 && lava.create === true) { //revisar este valor
         clearInterval(timerId); 
         clearInterval(timerId2); 
         var gameOverDiv = document.getElementById("game-over");
         board.style.display = "none"
-        gameOverDiv.style.display = "block"
-        ; 
+        gameOverDiv.style.display = "block"; 
     }
 }
 

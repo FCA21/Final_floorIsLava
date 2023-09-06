@@ -21,7 +21,7 @@ function Platform (x,y,widthP,platforms){
     }
 
    this.fallplatform = function () {
-    if (self.y < 1000 ) {
+    if (self.y < 980 ) {
         
         self.y = self.y + self.speedY
         self.sprite.style.top = self.y + 'px' 

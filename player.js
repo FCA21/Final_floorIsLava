@@ -1,3 +1,5 @@
+import { Lava } from "./lava.js"
+var lava = new Lava(0, 800);
 function Player(x, y) {
     var self = this
     this.x = x
@@ -14,7 +16,7 @@ function Player(x, y) {
     this.falling = true
     this.onPlatform = true
     this.score = 0
-
+   
     this.insertPlayer = function () { //Funcion para crear al jugador 
         var newPlayer = document.createElement("div")
         newPlayer.setAttribute("id", "player")
@@ -24,6 +26,9 @@ function Player(x, y) {
         board.appendChild(this.sprite)
 
     }
+
+
+   
 
     this.moveX = function () {
         self.x = self.x + self.speed * self.direction
@@ -77,7 +82,7 @@ function Player(x, y) {
     }
 
     this.moveY = function () {
-      
+        
         if (self.jumping === false) {
             
             self.fall()
@@ -85,6 +90,7 @@ function Player(x, y) {
           
             self.jump()
         }
+      
     }
 
     this.jump = function () {
@@ -107,10 +113,16 @@ function Player(x, y) {
   
 
     this.collision = function (platforms) {
+
+        if (self.score >= 150){ 
+            lava.insertLava()
+            lava.lavatrue()
+           }
+
         // platforms.forEach(platform => {
         for (let i = 0; i < platforms.length; i++) {
 
-            if (
+            if (self.y <= 880 &&
                 self.falling === true &&
                 self.y + self.height + self.speedY >= platforms[i].y && // Colisión con la plataforma solo cuando el player se encuentra por encima del eje y
                 self.x + self.width > platforms[i].x && // Colisión con la plataforma
@@ -121,16 +133,25 @@ function Player(x, y) {
                 self.onPlatform = true
                 self.speedY = 2
                 self.falling = false;
-                self.y = platforms[i].y - self.height
+                 self.y = platforms[i].y - self.height 
+                if (platforms[i].score !== 0) {
+                    self.score += platforms[i].score
+                    platforms[i].score = 0
+                    
+                    var newscore = document.getElementById("score")
+                    newscore.innerHTML = `Puntuacion: ${self.score}`;
+                }
             } else {
                 self.falling = true;
                 self.platforms = false
             }
+            
         }
     }
 
         this.firstcollision = function (firstplatform) {
             if (
+                self.score <= 150 &&
                 self.falling === true &&
                 self.y + self.height + self.speedY >= firstplatform.y && // Colisión con la plataforma solo cuando el player se encuentra por encima del eje y
                 self.x + self.width > firstplatform.x && // Colisión con la plataforma
@@ -167,6 +188,11 @@ function Player(x, y) {
             self.sprite.style.top = self.y + 'px'
         }
     }
+
+   
+
+
+
 }
 
 export { Player }
