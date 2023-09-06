@@ -5,8 +5,8 @@ var lava = new Lava(0, 800);
 var board = document.getElementById("board")
 var firstplatform = new Platform(0,880,600)
 var player1 = new Player(274, 5,lava);
-
-
+var gameAudio = document.getElementById("game-audio");
+var gameAudio2 = document.getElementById("game-audio2");
 
 var platforms = []
 
@@ -100,12 +100,14 @@ function restartGame() {
 function checkGameOver() {
    console.log(lava.create)
     if (player1.y >= 800 && lava.create === true) { //revisar este valor
+        gameAudio.pause();
         clearInterval(timerId); 
         clearInterval(timerId2); 
         player1.score = 0
         lava.create = false
         lava.sprite.style.display = "none"
-        
+        gameAudio2.play();;
+
         var newscore = document.getElementById("score")
         newscore.innerHTML = `Puntuacion: ${player1.score}`;
         var gameOverDiv = document.getElementById("game-over");
@@ -152,6 +154,7 @@ var timerId2
 function start () {
     timerId = setInterval(loop,22)
     timerId2 = setInterval(createplatform,1200)
+    gameAudio.play();
 }
 
 

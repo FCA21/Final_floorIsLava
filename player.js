@@ -41,30 +41,6 @@ function Player(x, y,lava) {
         }
     }
 
-    this.jump = function(platforms) {
-        self.speedY -1
-        self.Y = self.y - 200
-        self.sprite.style.top = self.y + 'px'
-        console.log(self.speedY)
-        self.falling = true
-       
-        
-        if (!self.jumping) { // Verificar si no estamos ya en medio de un salto
-            self.jumping = true; // Marcamos que estamos en medio de un salto
-            let alturaSalto = 0;
-            let saltoInterval = setInterval(function() {
-                // Mueve el personaje hacia arriba (simulando un salto)
-                alturaSalto += 5; // Puedes ajustar la altura del salto cambiando este valor
-                self.sprite.style.bottom = alturaSalto + "px";
-                
-                if (alturaSalto >= 100) {
-                    clearInterval(saltoInterval);
-                    self.caer();
-                }
-            });
-        }
-    }
-
     this.caer = function() {
         if (self.jumping) { // Verificar si estamos en medio de un salto
             let caidaInterval = setInterval(function() {
@@ -125,11 +101,11 @@ function Player(x, y,lava) {
 
             if (self.y <= 880 &&
                 self.falling === true &&
-                self.y + self.height + self.speedY >= platforms[i].y && // Colisión con la plataforma solo cuando el player se encuentra por encima del eje y
-                self.x + self.width > platforms[i].x && // Colisión con la plataforma
+                self.y + self.height + self.speedY >= platforms[i].y && 
+                self.x + self.width > platforms[i].x && 
                 self.x < platforms[i].x + platforms[i].widthP &&
                 self.y + self.height <= platforms[i].y + 1 &&
-                self.speedY >= 0 // Colisión con la plataforma en la siguiente posición para que no se pase tuvimos que añadir la velocidad
+                self.speedY >= 0 
             ) {
                 self.onPlatform = true
                 self.speedY = 2
@@ -140,7 +116,7 @@ function Player(x, y,lava) {
                     platforms[i].score = 0
                     
                     var newscore = document.getElementById("score")
-                    newscore.innerHTML = `Puntuacion: ${self.score}`;
+                    newscore.innerHTML = `Score: ${self.score}`;
                 }
             } else {
                 self.falling = true;
