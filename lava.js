@@ -6,7 +6,7 @@ function Lava (x, y) {
     this.sprite
     this.create = false
 
-console.log(this.create)
+
 this.insertLava = function () { //Funcion para crear la lava 
     var newLava = document.createElement("div")
     newLava.setAttribute("id", "lava")

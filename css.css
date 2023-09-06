@@ -1,5 +1,6 @@
 body{margin: 0;
-padding: 0;}
+padding: 0;
+background-color: black;}
 
 
 #board{width: 600px;
@@ -10,7 +11,7 @@ position: relative;
 padding: 0;
 border-radius: 5px;
 overflow: hidden;
-background-image: url(./Recursos/water8.jpg);
+background-image: url(./Recursos/15810a9d013aa89e428d5a5e3f8b3709.jpg);
 background-size: cover;
 background-repeat: no-repeat;
 
@@ -20,9 +21,11 @@ background-repeat: no-repeat;
 
 #player{
    
-    background-color: rgb(255, 0, 21);
-    width: 30px;
-    height: 30px;
+    background-image: url(./Recursos/frog.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 60px;
+    height: 60px;
     position: absolute;
 
 }
@@ -49,14 +52,17 @@ background-repeat: no-repeat;
     background-position: center;
 }
 
-#lava{background-color: red;
+#lava{
+background-image: url(./Recursos/giphy.gif);
+background-size: cover;
+background-position: center;
 width: 600px;
 height: 100px;
 position: absolute;}
 
 #score{
     position: absolute;
-    color: rgb(3, 3, 3);
+    color: yellow;
     font-size: 20px;
     height: 50px;
     width: 900px;

@@ -1,6 +1,6 @@
 import { Lava } from "./lava.js"
-var lava = new Lava(0, 800);
-function Player(x, y) {
+
+function Player(x, y,lava) {
     var self = this
     this.x = x
     this.y = y
@@ -11,8 +11,8 @@ function Player(x, y) {
     this.jumping = false
     this.speedY = 1
     this.gravity = 1.05
-    this.height = 30
-    this.width = 30
+    this.height = 60
+    this.width = 60
     this.falling = true
     this.onPlatform = true
     this.score = 0
@@ -117,6 +117,7 @@ function Player(x, y) {
         if (self.score >= 150){ 
             lava.insertLava()
             lava.lavatrue()
+           
            }
 
         // platforms.forEach(platform => {

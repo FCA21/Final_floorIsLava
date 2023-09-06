@@ -1,12 +1,12 @@
 import { Player } from "./player.js"
 import { Platform } from "./platform.js"
 import { Lava } from "./lava.js"
-
+var lava = new Lava(0, 800);
 var board = document.getElementById("board")
 var firstplatform = new Platform(0,880,600)
-var player1 = new Player(274, 5);
+var player1 = new Player(274, 5,lava);
 
-var lava = new Lava(0, 880);
+
 
 var platforms = []
 
@@ -68,42 +68,51 @@ function startGame() {
 
 //Pantalla restart
 var restartButton = document.createElement("button");
-restartButton.textContent = "Restart Game";
+restartButton.textContent = "Main Menu";
 restartButton.addEventListener("click", restartGame)
 var gameOverDiv = document.getElementById("game-over");
 gameOverDiv.appendChild(restartButton);
 
 
 function restartGame() {
-    clearInterval(timerId);
-    clearInterval(timerId2);
+    location.reload()
+    // clearInterval(timerId);
+    // clearInterval(timerId2);
 
-    platforms.forEach(function (platform) {
-        platform.sprite.remove();
-    });
-    platforms = [];
+    // platforms.forEach(function (platform) {
+    //     platform.sprite.remove();
+    // });
+    // platforms = [];
 
-    player1.sprite.remove();
+    // player1.sprite.remove();
 
-    firstplatform = new Platform(0, 880, 600);
-    firstplatform.insertPlatform();
-    firstplatform.sprite.classList.add("platform1")
-    firstplatform.sprite.classList.remove("platform")
-    player1 = new Player(274, 5);
-    player1.insertPlayer();
-    gameOverDiv.style.display = "none"
-    board.style.display = "block"
-    start();
+    // firstplatform = new Platform(0, 880, 600);
+    // firstplatform.insertPlatform();
+    // firstplatform.sprite.classList.add("platform1")
+    // firstplatform.sprite.classList.remove("platform")
+    // player1 = new Player(274, 5);
+    // player1.insertPlayer();
+    // gameOverDiv.style.display = "none"
+    // board.style.display = "block"
+    // start();
 }
 
 function checkGameOver() {
+   console.log(lava.create)
     if (player1.y >= 800 && lava.create === true) { //revisar este valor
         clearInterval(timerId); 
         clearInterval(timerId2); 
+        player1.score = 0
+        lava.create = false
+        lava.sprite.style.display = "none"
+        
+        var newscore = document.getElementById("score")
+        newscore.innerHTML = `Puntuacion: ${player1.score}`;
         var gameOverDiv = document.getElementById("game-over");
         board.style.display = "none"
         gameOverDiv.style.display = "block"; 
     }
+
 }
 
 
@@ -135,6 +144,7 @@ function loop () {
     player1.moveX()
     player1.moveY()
     checkGameOver();
+    console.log(player1.score)
 }
 
 var timerId 

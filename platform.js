@@ -34,5 +34,4 @@ function Platform (x,y,widthP,platforms){
 
 }
 
-
 export { Platform }
