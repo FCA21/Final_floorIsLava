@@ -1,6 +1,8 @@
 import { Player } from "./player.js"
 import { Platform } from "./platform.js"
 import { Lava } from "./lava.js"
+
+
 var lava = new Lava(0, 800);
 var board = document.getElementById("board")
 var firstplatform = new Platform(0,880,600)
@@ -13,6 +15,13 @@ var platforms = []
 firstplatform.insertPlatform()
 firstplatform.sprite.classList.add("platform1")
 firstplatform.sprite.classList.remove("platform")
+function playGameAudio() {
+    gameAudio.play();
+}
+
+gameAudio.addEventListener("canplaythrough", function () {
+    playGameAudio();
+});
 
 player1.insertPlayer()// Ejecutamos la funcion que crea al jugador
 
@@ -64,6 +73,7 @@ function startGame() {
     // Oculta la pantalla de inicio y muestra el tablero del juego
     startScreen.style.display = "none";
     board.style.display = "block";
+    playGameAudio();
 }
 
 //Pantalla restart
@@ -106,7 +116,7 @@ function checkGameOver() {
         player1.score = 0
         lava.create = false
         lava.sprite.style.display = "none"
-        gameAudio2.play();;
+        gameAudio2.play();
 
         var newscore = document.getElementById("score")
         newscore.innerHTML = `Puntuacion: ${player1.score}`;
@@ -152,9 +162,11 @@ function loop () {
 var timerId 
 var timerId2
 function start () {
+   
     timerId = setInterval(loop,22)
     timerId2 = setInterval(createplatform,1200)
-    gameAudio.play();
+    gameAudio.play()
+   
 }
 
 
