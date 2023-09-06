@@ -4,7 +4,7 @@ function Platform (x,y,widthP,platforms){
     this.x = x
     this.y = y
     this.sprite
-    this.heightP = 10
+    this.heightP = 40
     this.widthP = widthP
     this.speedY = 1.8
     this.score = (widthP > 50)? 50 : 100

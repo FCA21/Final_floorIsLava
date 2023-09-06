@@ -24,8 +24,8 @@ background-repeat: no-repeat;
     background-image: url(./Recursos/choper.gif);
     background-size: cover;
     background-repeat: no-repeat;
-    width: 60px;
-    height: 60px;
+    width: 80px;
+    height: 80px;
     position: absolute;
 
 }
@@ -44,6 +44,7 @@ background-repeat: no-repeat;
 
 .platform1{ background-color: brown;
     height: 40px;
+    
     position: absolute;
      
     background-image: url(./Recursos/tronco.png);
@@ -206,3 +207,20 @@ p:hover {
     box-shadow: 0  03px rgba(52, 49, 49, 0.7);
 
 }
+
+.lava-appear {
+    animation: lavaAppear 2s ease-in-out; /* Puedes ajustar la duración y el temporizador según tus necesidades */
+  }
+@keyframes lavaAppear {
+    from {
+      opacity: 0;
+      transform: translateY(100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  
+  

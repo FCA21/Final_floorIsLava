@@ -11,8 +11,8 @@ function Player(x, y,lava) {
     this.jumping = false
     this.speedY = 1
     this.gravity = 1.05
-    this.height = 60
-    this.width = 60
+    this.height = 80
+    this.width = 80
     this.falling = true
     this.onPlatform = true
     this.score = 0
