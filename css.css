@@ -128,6 +128,25 @@ position: absolute;}
       font-size: 40px;
     }
   }
+
+  @keyframes arcadeTransition2 {
+    0% {
+      color: #ffffff;
+      font-size: 20px;
+    }
+    50% {
+      color: #ff0000;
+      font-size: 28px;
+    }
+    100% {
+      color: #ffffff;
+      font-size: 20px;
+    }
+  }
+
+
+
+
  /* Estilos para la pantalla de inicio  */
 #start {
     font-family: 'Press Start 2P', cursive; 
@@ -156,7 +175,7 @@ p:hover {
     color: #FF0000, #00FF00, #0000FF;
     
   }
-
+#score2{padding: 20px; animation: arcadeTransition2 2s infinite;}
 #start h1 {
     color: #ffffff;
     margin-top: 350px;

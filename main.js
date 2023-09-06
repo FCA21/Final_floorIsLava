@@ -115,14 +115,16 @@ function checkGameOver() {
         gameAudio.pause();
         clearInterval(timerId); 
         clearInterval(timerId2); 
+        var newscore2 = document.getElementById("score2")
+        newscore2.innerHTML = `Puntuacion: ${player1.score}`;
         player1.score = 0
         lava.create = false
         lava.sprite.style.display = "none"
         gameAudio2.play();
         gameAudio2.volume = 0.9;
 
-        var newscore = document.getElementById("score")
-        newscore.innerHTML = `Puntuacion: ${player1.score}`;
+        
+
         var gameOverDiv = document.getElementById("game-over");
         board.style.display = "none"
         gameOverDiv.style.display = "block"; 
