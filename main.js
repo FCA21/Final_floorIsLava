@@ -22,7 +22,7 @@ function playGameAudio() {
 gameAudio.addEventListener("canplaythrough", function () {
     playGameAudio();
 });
-
+gameAudio.volume = 0.4;
 player1.insertPlayer()// Ejecutamos la funcion que crea al jugador
 
 
@@ -65,6 +65,7 @@ var gameOverScreen = document.getElementById("game-over");
 
 // Agrega el botón "Start Game" al inicio
 startScreen.appendChild(document.createElement("h1")).textContent = "Welcome to My Game";
+startButton.setAttribute("id","startButton")
 startButton.addEventListener("click", startGame);
 startScreen.appendChild(startButton);
 document.body.appendChild(startScreen);
@@ -117,6 +118,7 @@ function checkGameOver() {
         lava.create = false
         lava.sprite.style.display = "none"
         gameAudio2.play();
+        gameAudio2.volume = 0.4;
 
         var newscore = document.getElementById("score")
         newscore.innerHTML = `Puntuacion: ${player1.score}`;

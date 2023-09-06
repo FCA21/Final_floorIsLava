@@ -71,7 +71,6 @@ position: absolute;}
     margin: 0 auto;
 }
 
-
 #game-over {
     font-family: 'Press Start 2P', cursive; 
     position: absolute;
@@ -113,8 +112,12 @@ position: absolute;}
     font-family: 'Press Start 2P', cursive; 
     top: 50%;
     left: 50%;
+    width: 870px;
+    height: 835px;
     transform: translate(-50%, -50%);
-    background-color: rgba(0, 0, 0, 0.7);
+    background-image:url("./Recursos/Screen_Shot_2023-09-06_at_7.46.01_PM.png");
+    background-size:cover;
+    background-repeat: no-repeat;
     padding: 20px;
     text-align: center;
     z-index: 999;
@@ -125,23 +128,27 @@ position: absolute;}
 }
 
 #start h1 {
-    font-size: 36px;
+    color: #0c0b0a;
+    margin-top: 350px;
+    text-align: center;
+    font-size: 40px;
     margin-bottom: 20px;
 }
 
 #startButton {
     padding: 10px 20px;
     font-size: 18px;
-    background-color: #0077FF;
+    background-color: #b53e0f;
     border: none;
-    color: white;
+    color: rgb(14, 13, 13);
     cursor: pointer;
     border-radius: 5px;
     outline: none;
+
 }
 
 #startButton:hover {
-    background-color: #0055DD;
+    background-color: #d01f1f;
+    box-shadow: 0  03px rgba(52, 49, 49, 0.7);
+
 }
-
-
