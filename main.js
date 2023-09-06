@@ -22,7 +22,7 @@ function playGameAudio() {
 gameAudio.addEventListener("canplaythrough", function () {
     playGameAudio();
 });
-gameAudio.volume = 0.4;
+gameAudio.volume = 0.9;
 player1.insertPlayer()// Ejecutamos la funcion que crea al jugador
 
 
@@ -64,7 +64,8 @@ startScreen.setAttribute("id", "start");
 var gameOverScreen = document.getElementById("game-over");
 
 // Agrega el botón "Start Game" al inicio
-startScreen.appendChild(document.createElement("h1")).textContent = "Welcome to My Game";
+startScreen.appendChild(document.createElement("h1")).textContent = "The Floor Is Lava";
+startScreen.appendChild(document.createElement("p")).textContent = "(Arcade Game Of The Year)";
 startButton.setAttribute("id","startButton")
 startButton.addEventListener("click", startGame);
 startScreen.appendChild(startButton);
@@ -118,7 +119,7 @@ function checkGameOver() {
         lava.create = false
         lava.sprite.style.display = "none"
         gameAudio2.play();
-        gameAudio2.volume = 0.4;
+        gameAudio2.volume = 0.9;
 
         var newscore = document.getElementById("score")
         newscore.innerHTML = `Puntuacion: ${player1.score}`;
